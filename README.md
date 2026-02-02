@@ -80,5 +80,13 @@ RaiseTechのカリキュラムをベースに、基礎から応用まで実践�
   - `put`（登録・上書き）と `get`（取得）
   - ラッパークラス（`Integer`）の必要性の理解
 
+### 11. 例外処理（try-catch）
+- **日付**: 2/2
+- **ファイル**: [exception/SimpleCalc.java](src/exception/SimpleCalc.java)
+- **学習内容**:
+  - `try-catch-finally` 構文によるエラー制御
+  - 一般的な例外クラスの使い分け (`NumberFormatException`, `ArithmeticException`)
+  - `Scanner` 使用時の入力チェックとリソース解放 (`close`)
+
 ---
-Last Updated: 2026/01/31
+Last Updated: 2026/02/02
