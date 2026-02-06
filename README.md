@@ -88,5 +88,13 @@ RaiseTechのカリキュラムをベースに、基礎から応用まで実践�
   - 一般的な例外クラスの使い分け (`NumberFormatException`, `ArithmeticException`)
   - `Scanner` 使用時の入力チェックとリソース解放 (`close`)
 
+### 12. 例外処理(例外処理をJUnitでテスト)
+- **日付**: 2/6
+- **ファイル**:[exception/calculator.java](src/exception/Calculator.java),[exceptionTest/CalculatorTest](src/exceptionTest/CalculatorTest.java)
+- **学習内容**:
+  - JUnitでのテスト
+  - 純粋メソッドの中に閉じ込めたロジックに対して例外を処理する
+  - 正規表現を用いて文字列を分解、検証
+
 ---
-Last Updated: 2026/02/02
+Last Updated: 2026/02/06
