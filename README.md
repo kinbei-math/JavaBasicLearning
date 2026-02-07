@@ -96,5 +96,13 @@ RaiseTechのカリキュラムをベースに、基礎から応用まで実践�
   - 純粋メソッドの中に閉じ込めたロジックに対して例外を処理する
   - 正規表現を用いて文字列を分解、検証
 
+### 13. 例外処理(例外をThrow)
+- **日付**: 2/7
+- **ファイル**:[exceptionTest/CalculateTest.java](src/exceptionTest/CalculateTest.java),[exception/Calculator.java](src/exception/Calculator.java)
+- **学習内容**:
+  - JUnitのテストの名称をより実務向けに
+  - Partternのインスタンスをメソッドの外にだしてPrivate static finalで定義
+  - 負の数を含む計算をテストに追加
+  - エラーを検出するだけでなく、エラーの種類を検出できるようにメッセージをもらう
 ---
 Last Updated: 2026/02/06
