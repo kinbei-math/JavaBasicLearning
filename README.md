@@ -5,7 +5,8 @@ RaiseTechのカリキュラムをベースに、基礎から応用まで実践�
 
 ## 🛠 開発環境
 - OS: Windows 11
-- Language: Java 17 (Amazon Corretto)
+- Language: Java 25 (Amazon Corretto)
+- JUtil6
 - IDE: IntelliJ IDEA Community Edition
 
 ## 📚 学習ログ（進捗順）

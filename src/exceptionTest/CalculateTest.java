@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 
 class CalculateTest {
     Calculator calc = new Calculator();
-    private static final String ERROR1= "invalid expression";
-    private static final String ERROR2= "Division by zero";
+    private static final String ERROR_INVALID = "invalid expression";
+    private static final String ERROR_DIVIDE_BY_ZERO= "Division by zero";
     @Test
-    void shouldResult2_whenNoSpaces() {// 通常の演算
+    void shouldResult12_whenNoSpaces() {// 通常の演算
         assertEquals(12, calc.calculate("10+2"));
     }
 
@@ -18,39 +18,39 @@ class CalculateTest {
     }
 
     @Test
-    void shouldResultEROOR2_whenDivisionByZero() {//0除算
-        ArithmeticException exception_DivisionByZero = assertThrows(ArithmeticException.class, () -> calc.calculate("10/0"));
-        assertEquals(ERROR2, exception_DivisionByZero.getMessage());
+    void shouldResultError_whenDivisionByZero() {//0除算
+        ArithmeticException exceptionDivisionByZero = assertThrows(ArithmeticException.class, () -> calc.calculate("10/0"));
+        assertEquals(ERROR_DIVIDE_BY_ZERO, exceptionDivisionByZero.getMessage());
     }
 
     @Test
-    void shouldResulutInvalidExpression_whenRightNotClear() {
+    void shouldResultInvalidExpression_whenIncompleteExpression() {
         IllegalArgumentException exception_invalidexpression = assertThrows(IllegalArgumentException.class, () -> calc.calculate("10+"));
-        assertEquals(ERROR1, exception_invalidexpression.getMessage());
+        assertEquals(ERROR_INVALID, exception_invalidexpression.getMessage());
     }
 
     @Test
-    void shouldResultEROOR1_whenOperatorClear1() {//演算子不明
+    void shouldResultError_whenOperatorUnknown() {//演算子不明
         IllegalArgumentException exception_invalidexpression = assertThrows(IllegalArgumentException.class, () -> calc.calculate("10?2"));
-        assertEquals(ERROR1, exception_invalidexpression.getMessage());
+        assertEquals(ERROR_INVALID, exception_invalidexpression.getMessage());
     }
 
     @Test
-    void shouldResultEROOR1_whenOperatorNotClear2() {// 演算子異常
+    void shouldResultError_whenRightOperandIsNegative() {// 演算子異常
         IllegalArgumentException exception_invalidexpression = assertThrows(IllegalArgumentException.class, () -> calc.calculate("10++2"));
-        assertEquals(ERROR1, exception_invalidexpression.getMessage());
+        assertEquals(ERROR_INVALID, exception_invalidexpression.getMessage());
     }
 
     @Test
-    void shouldResultEROOR1_whenNegativeNumber1(){
+    void shouldResultEroor_whenNegativeNumber1(){
         IllegalArgumentException exception_invalidexpression = assertThrows(IllegalArgumentException.class, () -> calc.calculate("1+-2"));
-        assertEquals(ERROR1, exception_invalidexpression.getMessage());
+        assertEquals(ERROR_INVALID, exception_invalidexpression.getMessage());
     }
 
     @Test
-    void shouldResultEROOR1_whenNegativeNumber2(){
+    void shouldResultError_whenNegativeNumber2(){
         IllegalArgumentException exception_invalidexpression = assertThrows(IllegalArgumentException.class, () -> calc.calculate("-1+2"));
-        assertEquals(ERROR1, exception_invalidexpression.getMessage());
+        assertEquals(ERROR_INVALID, exception_invalidexpression.getMessage());
     }
 }
 
