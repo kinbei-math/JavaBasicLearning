@@ -19,8 +19,8 @@ class CalculateTest {
 
     @Test
     void shouldResultError_whenDivisionByZero() {//0除算
-        ArithmeticException exceptionDivisionByZero = assertThrows(ArithmeticException.class, () -> calc.calculate("10/0"));
-        assertEquals(ERROR_DIVIDE_BY_ZERO, exceptionDivisionByZero.getMessage());
+        ArithmeticException exception_DivisionByZero = assertThrows(ArithmeticException.class, () -> calc.calculate("10/0"));
+        assertEquals(ERROR_DIVIDE_BY_ZERO, exception_DivisionByZero.getMessage());
     }
 
     @Test
