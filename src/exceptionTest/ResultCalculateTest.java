@@ -14,7 +14,7 @@ public class ResultCalculateTest {
     @Test
     void shouldResult12_whenSpaces() {//スペース付き演算
         //result(名前)の箱に結果をいれる。Succes or Failuer
-        CalculationResult result = calc.calculateresult("10 + 2");
+        CalculationResult result = calc.CalculationResult("10 + 2");
         //検証用のデータをその場で作って検証する。中身まで検証される。
         assertEquals(new CalculationResult.Success(12), result);
     }

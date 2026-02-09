@@ -1,7 +1,5 @@
 package exception;
 
-import exception.CalculationResult;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,15 +11,15 @@ public class ResultCalculator {
 
 
     //公開 戻り値の型(interface, 成功or失敗) メソッド名 引数
-    public CalculationResult calculateresult(String input){
+    public CalculationResult CalculationResult(String input){
 
         // 文字列を整理 input_deln の意味が弱い修正→brankdelete→withoutWhitespace
-        String withoutWhitespace =input.replaceAll("\\s+","");//Stringクラスの関数を使って空白(\\n)削除
+        String withoutWhitespace =input.replaceAll("\\s+","");//Stringクラスの関数を使って空白(\\n)削除 これも少し重い？
 
         Matcher match = EXPRESSION_PATTERN.matcher(withoutWhitespace);//このパターンでグループ化
         if(!match.matches())//inputしたものが上のパターンに適しているかを調べる。
         {
-            return new CalculationResult.Failure(CalculationResult.ErrorCode.INVALID_EXPRESSION,"invalid expression: "+input);//適していなければ「式が不正」であるとエラーを出す。
+            return new CalculationResult.Failure(CalculationResult.ErrorCode.INVALID_EXPRESSION,"invalid expression");//適していなければ「式が不正」であるとエラーを出す。
         }
 
         //計算の準備　変換エラーが出れば途中で止まる。
