@@ -11,15 +11,19 @@ public class ResultCalculator {
 
 
     //公開 戻り値の型(interface, 成功or失敗) メソッド名 引数
-    public CalculationResult CalculationResult(String input){
+    public CalculationResult calculate(String input){
 
+        //中身がnullなら受け渡しミス。内部バグ
+        if(input == null){
+            return new CalculationResult.Failure(CalculationResult.ErrorCode.INTERNAL_ERROR);
+        }
         // 文字列を整理 input_deln の意味が弱い修正→brankdelete→withoutWhitespace
-        String withoutWhitespace =input.replaceAll("\\s+","");//Stringクラスの関数を使って空白(\\n)削除 これも少し重い？
+        String withoutWhitespace = input.replaceAll("\\s+","");//Stringクラスの関数を使って空白(\\n)削除 これも少し重い？
 
         Matcher match = EXPRESSION_PATTERN.matcher(withoutWhitespace);//このパターンでグループ化
         if(!match.matches())//inputしたものが上のパターンに適しているかを調べる。
         {
-            return new CalculationResult.Failure(CalculationResult.ErrorCode.INVALID_EXPRESSION,"invalid expression");//適していなければ「式が不正」であるとエラーを出す。
+            return new CalculationResult.Failure(CalculationResult.ErrorCode.INVALID_EXPRESSION);//適していなければ「式が不正」であるとエラーを出す。
         }
 
         //計算の準備　変換エラーが出れば途中で止まる。
@@ -35,12 +39,12 @@ public class ResultCalculator {
             case "*":return new CalculationResult.Success(left*right);// 積
             case "/":{
                 if(right==0){
-                    return new CalculationResult.Failure(CalculationResult.ErrorCode.DIVIDE_BY_ZERO,"Division by zero");//0で割ってる場合エラー
+                    return new CalculationResult.Failure(CalculationResult.ErrorCode.DIVISION_BY_ZERO);//0で割ってる場合エラー
                 }else{
                     return new CalculationResult.Success(left/right);// 商
                 }
             }
-            default:return new CalculationResult.Failure(CalculationResult.ErrorCode.INVALID_EXPRESSION,"Unexpected operator: " + operator);//想定外の演算子がきてる。本来到達しない。
+            default:return new CalculationResult.Failure(CalculationResult.ErrorCode.INTERNAL_ERROR);//想定外の演算子がきてる。本来到達しない。
         }
     }
 }

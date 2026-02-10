@@ -108,10 +108,10 @@ RaiseTechのカリキュラムをベースに、基礎から応用まで実践�
 
 ### 14.W1回収：戻り値版（sealed Result）着手 + テスト追加開始
 - **日付**: 2026/02/10
-- **ファイル**:src/main/java/exception/Calculator.java,src/main/java/exception/ResultCalculator.java,src/main/java/exception/CalculationResult.java,src/test/java/exceptionTest/CalculateTest.java,src/test/java/exceptionTest/ResultCalculateTest.java
+- **ファイル**:[exception/Calculator.java](src/main/java/exception/Calculator.java),[exception/ResultCalculator.java](src/main/java/exception/ResultCalculator.java),[exception/CalculationResult.java](src/main/java/exception/CalculationResult.java),[exceptionTest/CalculateTest.java](src/test/java/exceptionTest/CalculateTest.java),[exceptionTest/ResultCalculateTest.java](src/test/java/exceptionTest/ResultCalculateTest.java)
 - **学習内容**:
   - sealed interface + record Success/Failure で計算結果を型として表現
   - 戻り値版のJUnitを1本追加（Successケース）
   - 仕様（invalid expression統一、演算子制約、/0）との整合性をレビュー観点で確認
 ---
-Last Updated: 2026/02/09
+Last Updated: 2026/02/10

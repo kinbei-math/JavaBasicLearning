@@ -32,7 +32,7 @@ public class Calculator{
                     return left/right;// 商
                 }
             }
-            default:throw new IllegalStateException("Unexpected operator: " + operator);//想定外の演算子がきてる。本来到達しない。
+            default:throw new IllegalStateException("internal error");//想定外の演算子がきてる。本来到達しない。
         }
     }
 }
