@@ -113,5 +113,17 @@ RaiseTechのカリキュラムをベースに、基礎から応用まで実践�
   - sealed interface + record Success/Failure で計算結果を型として表現
   - 戻り値版のJUnitを1本追加（Successケース）
   - 仕様（invalid expression統一、演算子制約、/0）との整合性をレビュー観点で確認
+
+  ### 15. equals/hashCode の手動実装（Itemクラス）
+  - **日付**: 2026/02/12
+  - **ファイル**: [production/Item.java](src/production/Item.java)
+  - **学習内容**:
+    - `record`禁止条件のもとで`equals`/`hashCode`/`toString`を手動実装
+    - 等価性の根拠を「品目コード(`itemCode`)のみ」と定義した設計判断
+    - `private final`フィールドによる不変オブジェクトの設計
+    - `instanceof`のパターンマッチングとnull安全性の確認
+    - Getterはクラス外向けの窓口であり、クラス内部では直接参照が適切
+    - `int`と`Integer`の使い分け（未設定を表現するためのnull許容）
+
 ---
-Last Updated: 2026/02/10
+Last Updated: 2026/02/12
