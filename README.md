@@ -125,5 +125,13 @@ RaiseTechのカリキュラムをベースに、基礎から応用まで実践�
     - Getterはクラス外向けの窓口であり、クラス内部では直接参照が適切
     - `int`と`Integer`の使い分け（未設定を表現するためのnull許容）
 
+### 16. equals/hashCode のテスト（ItemCodeTest）
+- **日付**: 2026/02/13
+- **ファイル**: [productionTest/ItemCodeTest.java](src/productionTest/ItemCodeTest.java)
+- **学習内容**:
+  - JUnitで equals/hashCode の挙動を4ケースで証明
+  - assertTrue より assertEquals の方がItemの等価性検証として意図が明確
+  - HashSetの重複排除がhashCode/equalsに依存することを確認
+  - ItemオブジェクトをHashMapのキーとして使い、別オブジェクトでも取得できることを証明
 ---
-Last Updated: 2026/02/12
+Last Updated: 2026/02/13

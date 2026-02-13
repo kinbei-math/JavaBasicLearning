@@ -29,14 +29,24 @@ public class Item {
     }
 
     @Override//toStringの書き換え。Itemクラスのインスタンスが持つ情報を表示させる。
-    public String toString(){
+    public String toString() {
         String display;
-        if(this.safetyStock==null){
+        if (this.safetyStock == null) {
             display = "なし";
-        }else{
+        } else {
             display = String.valueOf(this.safetyStock);
         }
-        return "Item[itemCode="+this.itemCode+", name="+this.name+", safetystock="+display+"]";
+        return "Item[itemCode=" + this.itemCode + ", name=" + this.name + ", safetystock=" + display + "]";
+    }
+
+    public String getItemCode(){
+        return this.itemCode;
+    }
+    public String getName(){
+        return this.name;
+    }
+    public Integer getSafetyStock(){
+        return this.safetyStock;
     }
 }
 
