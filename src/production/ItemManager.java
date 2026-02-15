@@ -1,8 +1,6 @@
 package production;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 //品目管理ロジック（HashMapでの登録/検索）
 public class ItemManager {
@@ -21,5 +19,9 @@ public class ItemManager {
             throw new NoSuchElementException("この品目コードのItemは存在しません。");
         }
         return checkItem;
+    }
+
+    public List<Item> getAllItems(){
+        return List.copyOf(itemMap.values());
     }
 }
