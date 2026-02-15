@@ -158,14 +158,14 @@ RaiseTechのカリキュラムをベースに、基礎から応用まで実践�
   - コミットメッセージは`feat:` / `test:` / `fix:` / `refactor:`で内容を明示する
   - 作業開始前に`git pull`する習慣をつける
 
-20. Stream API 基礎（getAllItems / getTotalSafetyStock / getItemsBelowSafetyStock）
-日付: 2026/02/15
-ファイル: production/ItemManager.java, productionTest/ItemManagerTest.java
-学習内容:
+### 20. Stream API 基礎（getAllItems / getTotalSafetyStock / getItemsBelowSafetyStock）
 
-getAllItems(): HashMap.values() → List.copyOf() で変更不可リストを返す設計
-getTotalSafetyStock(): ループ版 → Stream版（mapToInt + sum）への書き換え
-getItemsBelowSafetyStock(): filter を使った条件抽出
-テスト設計：正常系・空リスト・境界値（片方だけ引っかかるケース）の観点
+- **日付**: 2026/02/15
+- **ファイル**: [production/ItemManager.java](src/production/ItemManager.java), [productionTest/ItemManagerTest.java](src/productionTest/ItemManagerTest.java)
+- **学習内容**:
+  - `getAllItems()`: `HashMap.values()` → `List.copyOf()` で変更不可リストを返す設計
+  - `getTotalSafetyStock()`: ループ版 → Stream版（`mapToInt` + `sum`）への書き換え
+  - `getItemsBelowSafetyStock()`: `filter` を使った条件抽出
+  - テスト設計：正常系・空リスト・境界値（片方だけ引っかかるケース）の観点
 ---
 Last Updated: 2026/02/15
