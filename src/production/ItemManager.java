@@ -2,6 +2,7 @@ package production;
 
 import java.util.*;
 
+
 //品目管理ロジック（HashMapでの登録/検索）
 public class ItemManager {
     //フィールドにMapを作成。メソッドではなく、クラス単位で管理
@@ -23,5 +24,25 @@ public class ItemManager {
 
     public List<Item> getAllItems(){
         return List.copyOf(itemMap.values());
+    }
+
+/*    public int getTotalSafetyStock(){//ループ版
+        int sum=0;
+        List<Item> items = getAllItems();
+        for(int i=0;i<items.size();i++){
+            sum += items.get(i).getSafetyStock();
+        }
+        return sum;
+    }
+ */
+
+    public int getTotalSafetyStock(){//Stream版
+        return getAllItems().stream()
+                .mapToInt(Item::getSafetyStock)
+                .sum();
+        //(データ).stream()は(データ)の集合に対してstream機能を使うよという宣言
+        //mapToInt mapの値をIntに変換 Item::メソッド名　Itemクラスの○○メソッドを使うという宣言
+        //sum() 和を求めるという終端操作
+        //リストから使うときはimport不要。型として宣言、Collectorsなどのようにクラス名直接書く場合は必要
     }
 }

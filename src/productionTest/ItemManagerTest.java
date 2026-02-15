@@ -49,4 +49,16 @@ public class ItemManagerTest {
         ItemManager emptyManager = new ItemManager();
         assertTrue(emptyManager.getAllItems().isEmpty());
     }
+
+    @Test//Mapのsafetystockのsumがしっかり計算されていることを確認
+    void getTotalSafetyStock_shouldReturnSumOfSafetyStock_whenItemsAreRegistered(){
+        assertEquals(1000,itemManager.getTotalSafetyStock());
+    }
+
+    @Test //Mapが空なら0になることを確認
+    void getTotalSafetyStock_shouldReturn0_whenNoItemsAreRegistered(){
+        ItemManager emptyManager = new ItemManager();
+        assertEquals(0,emptyManager.getTotalSafetyStock());
+    }
+
 }
