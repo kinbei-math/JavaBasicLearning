@@ -134,25 +134,7 @@ RaiseTechのカリキュラムをベースに、基礎から応用まで実践�
   - HashSetの重複排除がhashCode/equalsに依存することを確認
   - ItemオブジェクトをHashMapのキーとして使い、別オブジェクトでも取得できることを証明
 
-### 17. equals/hashCode の手動実装（Itemクラス）
-- **日付**: 2026/02/13
-- **ファイル**: [production/Item.java](src/production/Item.java)
-- **学習内容**:
-  - `record`禁止条件のもとで`equals`/`hashCode`/`toString`を手動実装
-  - 等価性の根拠を`itemCode`のみと定義した設計判断
-  - `private final`による不変オブジェクトの設計
-  - `int`と`Integer`の使い分け（null許容が必要なフィールド）
-  - クラス内部ではGetterではなく直接参照が適切
-
-### 18. equals/hashCode のテスト（ItemCodeTest）
-- **日付**: 2026/02/13
-- **ファイル**: [productionTest/ItemCodeTest.java](src/productionTest/ItemCodeTest.java)
-- **学習内容**:
-  - `assertEquals`はクラスのequalsを使って検証するためtrueAssertより意図が明確
-  - HashSetの重複排除がhashCode/equalsに依存することを確認
-  - ItemオブジェクトをHashMapのキーとして使い別オブジェクトでも取得できることを証明
-
-### 19. クラス分割（ItemValidator / ItemManager）
+### 17. クラス分割（ItemValidator / ItemManager）
 - **日付**: 2026/02/15
 - **ファイル**: [production/ItemValidator.java](src/production/ItemValidator.java), [production/ItemManager.java](src/production/ItemManager.java)
 - **学習内容**:
@@ -161,7 +143,7 @@ RaiseTechのカリキュラムをベースに、基礎から応用まで実践�
   - `null`返却より`NoSuchElementException`を投げる設計判断
   - `private final`でフィールドを保護する重要性
 
-### 20. クラス分割のテスト（ItemValidatorTest / ItemManagerTest）
+### 18. クラス分割のテスト（ItemValidatorTest / ItemManagerTest）
 - **日付**: 2026/02/15
 - **ファイル**: [productionTest/ItemValidatorTest.java](src/productionTest/ItemValidatorTest.java), [productionTest/ItemManegerTest.java](src/productionTest/ItemManegerTest.java)
 - **学習内容**:
@@ -169,7 +151,7 @@ RaiseTechのカリキュラムをベースに、基礎から応用まで実践�
   - 同じ観点の検証は1テストにまとめる
   - テストを分ける基準：「条件が異なるか／観点が異なるか」
 
-### 21. Git ブランチ運用
+### 19. Git ブランチ運用
 - **日付**: 2026/02/15
 - **学習内容**:
   - `feature/w2-item-equals`ブランチで作業→mainにmergeするフローを実践
@@ -177,4 +159,4 @@ RaiseTechのカリキュラムをベースに、基礎から応用まで実践�
   - 作業開始前に`git pull`する習慣をつける
 
 ---
-Last Updated: 2026/02/13
+Last Updated: 2026/02/15
