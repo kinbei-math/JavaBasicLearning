@@ -45,4 +45,10 @@ public class ItemManager {
         //sum() 和を求めるという終端操作
         //リストから使うときはimport不要。型として宣言、Collectorsなどのようにクラス名直接書く場合は必要
     }
+
+    public List<Item> getItemsBelowSafetyStock(int currentStock){
+        return getAllItems().stream()
+                .filter(item->item.getSafetyStock()>currentStock)
+                .toList();
+    }
 }

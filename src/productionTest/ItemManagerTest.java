@@ -20,7 +20,7 @@ public class ItemManagerTest {
     void setUp() { // メソッドはメソッドの中でしか使えない。
         itemManager = new ItemManager();
         item1 = new Item("K-0029", "ネジ", 500);
-        item2 = new Item("K-0030", "ボルト", 500);
+        item2 = new Item("K-0030", "ボルト", 1500);
         itemManager.addItem(item1);
         itemManager.addItem(item2);
     }
@@ -52,7 +52,7 @@ public class ItemManagerTest {
 
     @Test//Mapのsafetystockのsumがしっかり計算されていることを確認
     void getTotalSafetyStock_shouldReturnSumOfSafetyStock_whenItemsAreRegistered(){
-        assertEquals(1000,itemManager.getTotalSafetyStock());
+        assertEquals(2000,itemManager.getTotalSafetyStock());
     }
 
     @Test //Mapが空なら0になることを確認
@@ -61,4 +61,16 @@ public class ItemManagerTest {
         assertEquals(0,emptyManager.getTotalSafetyStock());
     }
 
+    @Test // 現在在庫が1000のとき安全在庫を下回るものを検索
+    void getItemsBelowSafetyStock_shouldReturnMachingItems_whenCurrentStock1000(){
+        List<Item> lowSafetyStockList = itemManager.getItemsBelowSafetyStock(1000);
+        assertEquals(1,lowSafetyStockList.size());
+        assertFalse(lowSafetyStockList.contains(item1));
+        assertTrue(lowSafetyStockList.contains(item2));
+    }
+
+    @Test//現在在庫が2000のとき安全在庫を下回るものを検索
+    void getItemsBelowSafetyStock_shouldReturnEmptyList_whenCurrentStock2000(){
+        assertTrue(itemManager.getItemsBelowSafetyStock(2000).isEmpty());
+    }
 }
