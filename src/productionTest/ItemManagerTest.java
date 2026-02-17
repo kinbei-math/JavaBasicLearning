@@ -7,6 +7,7 @@ import production.ItemManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,8 +20,8 @@ public class ItemManagerTest {
     @BeforeEach//何度も繰り返す使う設定や初期化が必要な処理をテストの前に実行するメソッド
     void setUp() { // メソッドはメソッドの中でしか使えない。
         itemManager = new ItemManager();
-        item1 = new Item("K-0029", "ネジ", 500);
-        item2 = new Item("K-0030", "ボルト", 1500);
+        item1 = new Item("K-0029", "ネジM3", 500,"締結部品");
+        item2 = new Item("K-0030", "潤滑油", 1500,"消耗品");
         itemManager.addItem(item1);
         itemManager.addItem(item2);
     }
@@ -72,5 +73,15 @@ public class ItemManagerTest {
     @Test//現在在庫が2000のとき安全在庫を下回るものを検索
     void getItemsBelowSafetyStock_shouldReturnEmptyList_whenCurrentStock2000(){
         assertTrue(itemManager.getItemsBelowSafetyStock(2000).isEmpty());
+    }
+
+    @Test
+    void groupByCategory_shouldReturnCategorizedMap_whenItemsAreRegistered(){//カテゴリーごとにグループ化されているか、カテゴリーすべてに対して網羅されているか。
+        Map<String, List<Item>> itemsByCategory;
+        itemsByCategory = itemManager.groupByCategory();
+        assertEquals(List.of(item1),itemsByCategory.get("締結部品"));
+        assertEquals(List.of(item2),itemsByCategory.get("消耗品"));
+        assertEquals(2,itemsByCategory.size());
+
     }
 }

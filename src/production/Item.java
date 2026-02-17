@@ -6,12 +6,14 @@ public class Item {
     private final String itemCode;//品目コード
     private final String name;//品名
     private final Integer safetyStock;//安全在庫
+    private final String category;
 
     //コンストラクタ　finalで定義する場合必須
-    public Item(String itemCode,String name,Integer safetyStock){
+    public Item(String itemCode,String name,Integer safetyStock,String category){
         this.itemCode = itemCode;
         this.name = name;
         this.safetyStock = safetyStock;
+        this.category = category;
     }
 
     @Override//recordのequalsを書き換え
@@ -48,5 +50,6 @@ public class Item {
     public Integer getSafetyStock(){
         return this.safetyStock;
     }
+    public String getCategory(){ return this.category; }
 }
 

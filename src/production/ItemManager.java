@@ -1,6 +1,7 @@
 package production;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 //品目管理ロジック（HashMapでの登録/検索）
@@ -46,9 +47,14 @@ public class ItemManager {
         //リストから使うときはimport不要。型として宣言、Collectorsなどのようにクラス名直接書く場合は必要
     }
 
-    public List<Item> getItemsBelowSafetyStock(int currentStock){
+    public List<Item> getItemsBelowSafetyStock(int currentStock){//在庫数が安全在庫より少ないものを返すリスト
         return getAllItems().stream()
                 .filter(item->item.getSafetyStock()>currentStock)
                 .toList();
+    }
+
+    public Map<String, List<Item>> groupByCategory(){
+        return getAllItems().stream()
+                .collect(Collectors.groupingBy(Item::getCategory));
     }
 }
