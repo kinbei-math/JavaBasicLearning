@@ -8,10 +8,8 @@ import production.ItemManager;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ItemManagerTest {
@@ -95,6 +93,17 @@ public class ItemManagerTest {
         assertTrue(lines.contains("K-0030,潤滑油,1500,消耗品"));
         assertEquals(2,lines.size());
     }
+
+    @Test//Itemを探すのにOptionalを利用。Itemが登録されているとき
+    void findItem_shouldReturnOptionalWithItem_whenCodeIsRegistered(){
+        assertEquals(Optional.of(item1), itemManager.findItem("K-0029"));//どちらもOptionalの箱に入れて比較する。
+    }
+
+    @Test//Itemを探すのにOptionalを利用。Itemが登録されていないとき
+    void findItem_shouldReturnEmptyOptional_whenCodeIsUnregistered(){
+        assertTrue(itemManager.findItem("K-1000").isEmpty());//箱の中身が空であることを確認する。
+    }
+
 
     @AfterEach
     void tearDown() throws Exception{

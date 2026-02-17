@@ -73,4 +73,8 @@ public class ItemManager {
             throw new RuntimeException("予期せぬ書き込みエラーが発生しました", e);
         }
     }
+
+    public Optional<Item> findItem(String itemCode){//Optional(nullでもよい箱)を使って検索を簡略化
+        return Optional.ofNullable(itemMap.get(itemCode));
+    }
 }
