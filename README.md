@@ -167,5 +167,15 @@ RaiseTechのカリキュラムをベースに、基礎から応用まで実践�
   - `getTotalSafetyStock()`: ループ版 → Stream版（`mapToInt` + `sum`）への書き換え
   - `getItemsBelowSafetyStock()`: `filter` を使った条件抽出
   - テスト設計：正常系・空リスト・境界値（片方だけ引っかかるケース）の観点
+
+### 21. Stream API 応用（groupByCategory / exportToCsv / findItem）
+
+- **日付**: 2026/02/17
+- **ファイル**: [production/ItemManager.java](src/production/ItemManager.java), [productionTest/ItemManagerTest.java](src/productionTest/ItemManagerTest.java)
+- **学習内容**:
+  - `groupByCategory()`: `Collectors.groupingBy` でカテゴリ別に分類
+  - `exportToCsv()`: `BufferedWriter` + `try-with-resources` でCSV出力
+  - `findItem()`: `Optional.ofNullable` で null安全な検索を実装
+  - `@AfterEach` でテスト後の一時ファイル削除
 ---
-Last Updated: 2026/02/15
+Last Updated: 2026/02/17
