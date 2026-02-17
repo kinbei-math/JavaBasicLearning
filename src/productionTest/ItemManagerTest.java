@@ -1,10 +1,13 @@
 package productionTest;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import production.Item;
 import production.ItemManager;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -82,6 +85,20 @@ public class ItemManagerTest {
         assertEquals(List.of(item1),itemsByCategory.get("締結部品"));
         assertEquals(List.of(item2),itemsByCategory.get("消耗品"));
         assertEquals(2,itemsByCategory.size());
-
     }
+
+    @Test//csv出力したものが求める結果と一致することを確かめる。
+    void exportToCsv_shouldWriteCorrectLines_whenItemsAreRegistered() throws Exception{
+        itemManager.exportToCsv("test-output.csv");
+        List<String> lines = Files.readAllLines(Path.of("test-output.csv"));
+        assertTrue(lines.contains("K-0029,ネジM3,500,締結部品"));
+        assertTrue(lines.contains("K-0030,潤滑油,1500,消耗品"));
+        assertEquals(2,lines.size());
+    }
+
+    @AfterEach
+    void tearDown() throws Exception{
+        Files.deleteIfExists(Path.of("test-output.csv"));
+    }
+
 }

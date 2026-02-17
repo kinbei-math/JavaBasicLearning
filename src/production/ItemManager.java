@@ -1,5 +1,8 @@
 package production;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -56,5 +59,18 @@ public class ItemManager {
     public Map<String, List<Item>> groupByCategory(){
         return getAllItems().stream()
                 .collect(Collectors.groupingBy(Item::getCategory));
+    }
+
+    public void exportToCsv(String filePath){
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))){
+            for(Item item:getAllItems()){
+                writer.write(String.join(",",item.getItemCode(),item.getName(),String.valueOf(item.getSafetyStock()),item.getCategory()));
+                writer.newLine();
+            }
+        }catch(IOException e){
+            // 「想定内のトラブル（IOException）」を、
+            // 「致命的な異常事態（RuntimeException）」に変換して投げ直している
+            throw new RuntimeException("予期せぬ書き込みエラーが発生しました", e);
+        }
     }
 }
