@@ -177,5 +177,14 @@ RaiseTechのカリキュラムをベースに、基礎から応用まで実践�
   - `exportToCsv()`: `BufferedWriter` + `try-with-resources` でCSV出力
   - `findItem()`: `Optional.ofNullable` で null安全な検索を実装
   - `@AfterEach` でテスト後の一時ファイル削除
+
+### 22. flatMap による平坦化
+
+- **日付**: 2026/02/18
+- **ファイル**: [production/ItemManager.java](src/production/ItemManager.java), [productionTest/ItemManagerTest.java](src/productionTest/ItemManagerTest.java)
+- **学習内容**:
+  - `getAllItemsFromCategories()`: `flatMap` でネストしたリスト（`List<List<Item>>`）を平坦化
+  - `flatMap(List::stream)` でリストの集まりを1つのStreamに変換する仕組みを理解
+  - W3のDoD（Stream API / Optional / CSV出力）を完了
 ---
-Last Updated: 2026/02/17
+Last Updated: 2026/02/18
