@@ -104,10 +104,17 @@ public class ItemManagerTest {
         assertTrue(itemManager.findItem("K-1000").isEmpty());//箱の中身が空であることを確認する。
     }
 
+    @Test//平坦化されたリストが返ってきていることを確認する。
+    void getAllItemsFromCategories_shouldReturnFlattenedList_whenMultipleCategoriesExist(){
+        List<Item> flatList = itemManager.getAllItemsFromCategories();
+        assertTrue(flatList.contains(item1));
+        assertTrue(flatList.contains(item2));
+        assertEquals(2,flatList.size());
+    }
 
-    @AfterEach
+    @AfterEach//最後に起動する。
     void tearDown() throws Exception{
-        Files.deleteIfExists(Path.of("test-output.csv"));
+        Files.deleteIfExists(Path.of("test-output.csv"));//テストで出力したcsvの削除
     }
 
 }

@@ -56,7 +56,7 @@ public class ItemManager {
                 .toList();
     }
 
-    public Map<String, List<Item>> groupByCategory(){
+    public Map<String, List<Item>> groupByCategory(){//全アイテムをグループ分け。カテゴリーごとにリストを作って格納する。
         return getAllItems().stream()
                 .collect(Collectors.groupingBy(Item::getCategory));
     }
@@ -76,5 +76,11 @@ public class ItemManager {
 
     public Optional<Item> findItem(String itemCode){//Optional(nullでもよい箱)を使って検索を簡略化
         return Optional.ofNullable(itemMap.get(itemCode));
+    }
+
+    public List<Item> getAllItemsFromCategories(){//リストの2重化を防ぐ。
+        return groupByCategory().values().stream()
+                .flatMap(list->list.stream())//流れてきたlistをバラバラにしてstreamに乗せる。
+                .toList();
     }
 }
